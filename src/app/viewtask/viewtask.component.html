@@ -1,0 +1,63 @@
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Completed</th>
+            <th>Task</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let obj of tasks.getTask().reverse()">
+           
+
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" (change)="tasks.changeCompleted(obj.id)" id="flexCheckDefault" [(ngModel)]="obj.completed">
+                        <p>{{obj.id}}</p>
+                    </div>
+                </td>
+                <td *ngIf="obj.completed === false">
+                  <p>{{obj.task}}</p>
+                </td>
+                <td *ngIf="obj.completed === true">
+                  <p><s>{{obj.task}}</s></p>
+                </td>
+                <td>
+                    
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="tasks.viewUpdate(obj.id)">Update</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="tasks.deleteTask(obj.id)">Delete</button>
+                </td>
+
+
+        </tr>
+
+    </table>
+</div>
+<!-- modal -->
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> -->
+
+<app-updatebox></app-updatebox>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- modal -->

@@ -1,0 +1,16 @@
+<div class="container addtask-contain">
+    <div class="row">
+            <div class="col-sm-8">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Task"
+                        #target>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <button class="btn btn-dark" (click)="task.addTask(target.value); target.value = ''">Add Task</button>
+            </div>
+    </div>
+
+
+
+</div>
